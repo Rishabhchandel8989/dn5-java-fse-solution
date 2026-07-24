@@ -1,0 +1,53 @@
+/*------------ Hands-on 11 ------------------------*/
+
+import React, { Component } from "react";
+
+class CurrencyConverter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rupees: "",
+      euro: "",
+    };
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      rupees: event.target.value,
+    });
+  };
+
+  handleSubmit = () => {
+    const euro = (this.state.rupees / 90).toFixed(2);
+
+    this.setState({
+      euro,
+    });
+  };
+
+  render() {
+    return (
+      <div style={{ marginTop: "40px" }}>
+        <h2>Currency Converter</h2>
+
+        <input
+          type="number"
+          placeholder="Enter Rupees"
+          value={this.state.rupees}
+          onChange={this.handleChange}
+        />
+
+        {" "}
+
+        <button onClick={this.handleSubmit}>
+          Convert
+        </button>
+
+        <h3>Euro : € {this.state.euro}</h3>
+      </div>
+    );
+  }
+}
+
+export default CurrencyConverter;
